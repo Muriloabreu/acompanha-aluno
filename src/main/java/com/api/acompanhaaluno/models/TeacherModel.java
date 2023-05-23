@@ -1,5 +1,8 @@
 package com.api.acompanhaaluno.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,5 +21,7 @@ public class TeacherModel {
 	private String name;
 	@Column(nullable = false)
 	private String cpf;
+	
+	List<SchoolModel> schools = new ArrayList<>();
 
 }
