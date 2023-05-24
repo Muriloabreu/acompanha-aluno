@@ -40,7 +40,7 @@ public class ClassSchoolController {
 	public ResponseEntity<Object> saveClassSchool(@RequestBody @Valid ClassSchoolDto classSchoolDto){
 		
 		if (classSchoolService.existsByName(classSchoolDto.getName())) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Name !"); 
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Name ClassSchool is already in use!"); 
 		}
 		ClassSchoolModel classSchoolModel = new ClassSchoolModel();
 		BeanUtils.copyProperties(classSchoolDto, classSchoolModel); /*Coverte Dtos para Model*/
@@ -59,7 +59,7 @@ public class ClassSchoolController {
 		Optional<ClassSchoolModel> classSchoolOptional = classSchoolService.findById(id);
 
 		if (!classSchoolOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ClassSchool não encontrado. "); /*Mensagem se o cliente não for encontrado */
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ClassSchool not found. "); /*Mensagem se o cliente não for encontrado */
 		}
 
 		return ResponseEntity.status(HttpStatus.OK).body(classSchoolOptional.get());
@@ -71,11 +71,11 @@ public class ClassSchoolController {
 		Optional<ClassSchoolModel> classSchoolOptional = classSchoolService.findById(id);
 
 		if (!classSchoolOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ClassSchool não encontrado. "); 
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ClassSchool not found. "); 
 			}
 		
 		classSchoolService.delete(classSchoolOptional.get());
-		return ResponseEntity.status(HttpStatus.OK).body("Cliente deletado com sucesso!");
+		return ResponseEntity.status(HttpStatus.OK).body("ClassSchool deleted successfully.");
 
 	}
 	
@@ -87,7 +87,7 @@ public class ClassSchoolController {
 
 		if (!classSchoolOptional.isPresent()) {
 			
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ClassSchool não encontrado. "); 
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("ClassSchool not found. "); 
 			}
 		
 		var classSchoolModel = classSchoolOptional.get();
