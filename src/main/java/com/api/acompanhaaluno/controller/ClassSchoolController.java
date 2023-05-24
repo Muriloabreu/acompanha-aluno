@@ -54,7 +54,7 @@ public class ClassSchoolController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> getOneCliente(@PathVariable(value = "id") Long id) {
+	public ResponseEntity<Object> getOneClassSchool(@PathVariable(value = "id") Long id) {
 
 		Optional<ClassSchoolModel> classSchoolOptional = classSchoolService.findById(id);
 
@@ -80,7 +80,7 @@ public class ClassSchoolController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Object> updateCliente(@PathVariable(value = "id") Long id,
+	public ResponseEntity<Object> updateClassSchool(@PathVariable(value = "id") Long id,
 			                                        @RequestBody @Valid ClassSchoolDto classSchoolDto) {
 
 		Optional<ClassSchoolModel> classSchoolOptional = classSchoolService.findById(id);
