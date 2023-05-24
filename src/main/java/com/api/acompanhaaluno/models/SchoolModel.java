@@ -28,7 +28,7 @@ public class SchoolModel {
 	private String city;
 	@OneToMany
 	@JoinColumn(name = "school_id")
-	private List<ClassSchoolModel> classSchols = new ArrayList<>();
+	private List<ClassSchoolModel> classSchools = new ArrayList<>();
 	
 	
 	/* Constructor */
@@ -37,13 +37,13 @@ public class SchoolModel {
 		
 	}
 
-	public SchoolModel(Long id, String name, String cnpj, String city, List<ClassSchoolModel> classSchols) {
+	public SchoolModel(Long id, String name, String cnpj, String city, List<ClassSchoolModel> classSchools) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cnpj = cnpj;
 		this.city = city;
-		this.classSchols = classSchols;
+		this.classSchools = classSchools;
 	}
 
 
@@ -83,22 +83,22 @@ public class SchoolModel {
 	}
 	
 	public List<ClassSchoolModel> getClassSchols() {
-		return classSchols;
+		return classSchools;
 	}
 	
 	public void setClassSchols(List<ClassSchoolModel> classSchols) {
-		this.classSchols = classSchols;
+		this.classSchools = classSchols;
 	}
 
 	@Override
 	public String toString() {
 		return "SchoolModel [id=" + id + ", name=" + name + ", cnpj=" + cnpj + ", city=" + city + ", classSchols="
-				+ classSchols + "]";
+				+ classSchools + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(city, classSchols, cnpj, id, name);
+		return Objects.hash(city, classSchools, cnpj, id, name);
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class SchoolModel {
 		if (getClass() != obj.getClass())
 			return false;
 		SchoolModel other = (SchoolModel) obj;
-		return Objects.equals(city, other.city) && Objects.equals(classSchols, other.classSchols)
+		return Objects.equals(city, other.city) && Objects.equals(classSchools, other.classSchools)
 				&& Objects.equals(cnpj, other.cnpj) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 	
