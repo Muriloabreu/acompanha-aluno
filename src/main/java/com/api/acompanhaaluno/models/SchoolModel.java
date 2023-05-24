@@ -21,6 +21,8 @@ public class SchoolModel {
 	@Column(nullable = false)
 	private String city;
 	
+	/* Constructor */
+	
 	public SchoolModel() {
 		
 	}
@@ -32,6 +34,8 @@ public class SchoolModel {
 		this.cnpj = cnpj;
 		this.city = city;
 	}
+	
+	/* Accessor Methods */
 
 	public Long getId() {
 		return id;

@@ -21,6 +21,8 @@ public class ClassSchoolModel {
 	@Column(nullable = false)
 	private String category;
 	
+	/* Constructor */
+	
 	public ClassSchoolModel() {
 		
 	}
@@ -31,6 +33,8 @@ public class ClassSchoolModel {
 		this.name = name;
 		this.category = category;
 	}
+	
+	/* Accessor Methods */
 
 	public Long getId() {
 		return id;
