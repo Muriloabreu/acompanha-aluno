@@ -93,6 +93,7 @@ public class ClassSchoolController {
 		var classSchoolModel = classSchoolOptional.get();
 		classSchoolModel.setName(classSchoolDto.getName());
 		classSchoolModel.setCategory(classSchoolDto.getCategory());
+		classSchoolModel.setSchool(classSchoolDto.getSchool());
 		
 				
 		return ResponseEntity.status(HttpStatus.OK).body(classSchoolService.save(classSchoolModel));
