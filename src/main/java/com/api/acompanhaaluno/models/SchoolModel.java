@@ -1,19 +1,15 @@
 package com.api.acompanhaaluno.models;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Objects;
 
-import org.hibernate.annotations.ManyToAny;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,29 +25,20 @@ public class SchoolModel {
 	private String cnpj;
 	@Column(nullable = false)
 	private String city;
-	@ManyToAny
-	@JoinTable(
-			name = "TB_AUX_SCHOOL",
-			joinColumns = {@JoinColumn(name = "id_schools", referencedColumnName = "id" )},
-			inverseJoinColumns = {@JoinColumn(name = "id_class_schools", referencedColumnName = "id" )}
-			
-			)
-	private List<ClassSchoolModel> classSchools = new ArrayList<>();
-	
-	
+		
 	/* Constructor */
 	
 	public SchoolModel() {
 		
 	}
 
-	public SchoolModel(Long id, String name, String cnpj, String city, List<ClassSchoolModel> classSchools) {
+	public SchoolModel(Long id, String name, String cnpj, String city) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cnpj = cnpj;
 		this.city = city;
-		this.classSchools = classSchools;
+		
 	}
 
 
@@ -89,24 +76,15 @@ public class SchoolModel {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
-	public List<ClassSchoolModel> getClassSchols() {
-		return classSchools;
-	}
-	
-	public void setClassSchols(List<ClassSchoolModel> classSchols) {
-		this.classSchools = classSchols;
-	}
 
 	@Override
 	public String toString() {
-		return "SchoolModel [id=" + id + ", name=" + name + ", cnpj=" + cnpj + ", city=" + city + ", classSchols="
-				+ classSchools + "]";
+		return "SchoolModel [id=" + id + ", name=" + name + ", cnpj=" + cnpj + ", city=" + city + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(city, classSchools, cnpj, id, name);
+		return Objects.hash(city, cnpj, id, name);
 	}
 
 	@Override
@@ -118,9 +96,14 @@ public class SchoolModel {
 		if (getClass() != obj.getClass())
 			return false;
 		SchoolModel other = (SchoolModel) obj;
-		return Objects.equals(city, other.city) && Objects.equals(classSchools, other.classSchools)
-				&& Objects.equals(cnpj, other.cnpj) && Objects.equals(id, other.id) && Objects.equals(name, other.name);
+		return Objects.equals(city, other.city) && Objects.equals(cnpj, other.cnpj) && Objects.equals(id, other.id)
+				&& Objects.equals(name, other.name);
 	}
+	
+	
+
+	
+	
 	
 	
 	
