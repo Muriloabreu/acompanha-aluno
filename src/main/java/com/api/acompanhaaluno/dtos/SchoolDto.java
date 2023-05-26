@@ -1,12 +1,9 @@
 package com.api.acompanhaaluno.dtos;
 
 
-import java.util.List;
-
-import com.api.acompanhaaluno.models.ClassSchoolModel;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+
 
 public class SchoolDto {
 	
@@ -16,8 +13,7 @@ public class SchoolDto {
 	private String cnpj;
 	@NotBlank
 	private String city;
-	@NotNull
-	private List<ClassSchoolModel> classSchools;
+	
 	
 	
 	/* Constructor */
@@ -26,13 +22,12 @@ public class SchoolDto {
 		
 	}
 
-	public SchoolDto(@NotBlank String name, @NotBlank String cnpj, @NotBlank String city,
-			@NotNull List<ClassSchoolModel> classSchools) {
+	public SchoolDto(@NotBlank String name, @NotBlank String cnpj, @NotBlank String city) {
 		super();
 		this.name = name;
 		this.cnpj = cnpj;
 		this.city = city;
-		this.classSchools = classSchools;
+		
 	}
 
 	/* Accessor Methods */
@@ -61,13 +56,7 @@ public class SchoolDto {
 		this.city = city;
 	}
 
-	public List<ClassSchoolModel> getClassSchools() {
-		return classSchools;
-	}
-
-	public void setClassSchools(List<ClassSchoolModel> classSchools) {
-		this.classSchools = classSchools;
-	}
+	
 	
 	
 	
