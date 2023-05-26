@@ -9,7 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,8 +26,9 @@ public class ClassSchoolModel {
 	private String name;
 	@Column(nullable = false)
 	private String category;
-	@ManyToMany(mappedBy = "classSchools")
-	private List<SchoolModel> schools = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "school_id")
+	private SchoolModel school;
 	
 	/* Constructor */
 	
@@ -32,13 +36,15 @@ public class ClassSchoolModel {
 		
 	}
 
-	public ClassSchoolModel(Long id, String name, String category, List<SchoolModel> schools) {
+	public ClassSchoolModel(Long id, String name, String category, SchoolModel school) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.category = category;
-		this.schools = schools;
+		this.school = school;
 	}
+
+
 
 
 
@@ -67,22 +73,15 @@ public class ClassSchoolModel {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public List<SchoolModel> getSchools() {
-		return schools;
-	}
-	public void setSchools(List<SchoolModel> schools) {
-		this.schools = schools;
-	}
 
 	@Override
 	public String toString() {
-		return "ClassSchoolModel [id=" + id + ", name=" + name + ", category=" + category + ", schools=" + schools
-				+ "]";
+		return "ClassSchoolModel [id=" + id + ", name=" + name + ", category=" + category + ", school=" + school + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(category, id, name, schools);
+		return Objects.hash(category, id, name, school);
 	}
 
 	@Override
@@ -95,8 +94,15 @@ public class ClassSchoolModel {
 			return false;
 		ClassSchoolModel other = (ClassSchoolModel) obj;
 		return Objects.equals(category, other.category) && Objects.equals(id, other.id)
-				&& Objects.equals(name, other.name) && Objects.equals(schools, other.schools);
+				&& Objects.equals(name, other.name) && Objects.equals(school, other.school);
 	}
+	
+	
+	
+
+	
+
+	
 
 	
 	
