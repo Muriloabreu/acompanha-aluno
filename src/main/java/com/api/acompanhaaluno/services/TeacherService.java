@@ -11,5 +11,5 @@ public interface TeacherService {
 	Optional<TeacherModel> findById(Long id);
 	TeacherModel save(TeacherModel teacher);
 	void delete(TeacherModel teacher);
-	boolean existsByName(String name);
+	boolean existsByCpf(String cpf);
 }
