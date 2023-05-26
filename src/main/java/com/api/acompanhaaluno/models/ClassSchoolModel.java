@@ -42,10 +42,6 @@ public class ClassSchoolModel {
 		this.school = school;
 	}
 
-
-
-
-
 	/* Accessor Methods */
 
 	public Long getId() {
@@ -70,6 +66,12 @@ public class ClassSchoolModel {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public SchoolModel getSchool() {
+		return school;
+	}
+	public void setSchool(SchoolModel school) {
+		this.school = school;
 	}
 
 	@Override
