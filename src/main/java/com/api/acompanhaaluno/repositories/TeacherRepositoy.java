@@ -6,5 +6,6 @@ import com.api.acompanhaaluno.models.TeacherModel;
 
 public interface TeacherRepositoy extends JpaRepository<TeacherModel, Long>{
 	
-	boolean existsByName(String Name);
+	
+	boolean existsByCpf(String cpf);
 }
