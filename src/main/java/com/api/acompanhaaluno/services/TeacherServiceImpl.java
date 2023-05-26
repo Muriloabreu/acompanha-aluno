@@ -44,9 +44,9 @@ public class TeacherServiceImpl implements TeacherService{
 	}
 
 	@Override
-	public boolean existsByName(String name) {
+	public boolean existsByCpf(String cpf) {
 		
-		return teacherRepositoy.existsByName(name);
+		return teacherRepositoy.existsByCpf(cpf);
 	}
 
 }
