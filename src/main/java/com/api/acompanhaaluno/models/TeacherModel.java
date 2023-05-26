@@ -22,11 +22,12 @@ public class TeacherModel {
 	private Long id;
 	@Column(nullable = false)
 	private String name;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true, length = 15)
 	private String cpf;
-	@OneToMany
-	@JoinColumn(name = "teacher_id")
-	private List<SchoolModel> schools = new ArrayList<>();
+	@Column(nullable = false, unique = true)
+	private String email;
+	@Column(nullable = false)
+	private String senha;
 	@OneToMany
 	@JoinColumn(name = "teacher_id")
 	private List<ClassSchoolModel> classSchools = new ArrayList<>();
@@ -37,14 +38,18 @@ public class TeacherModel {
 		
 	}
 
-	public TeacherModel(Long id, String name, String cpf, List<SchoolModel> schools,  List<ClassSchoolModel> classSchools) {
-		
+	public TeacherModel(Long id, String name, String cpf, String email, String senha,
+			List<ClassSchoolModel> classSchools) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.schools = schools;
+		this.email = email;
+		this.senha = senha;
 		this.classSchools = classSchools;
 	}
+
+
 
 	/* Accessor Methods */
 	
@@ -71,14 +76,6 @@ public class TeacherModel {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
-	public List<SchoolModel> getSchools() {
-		return schools;
-	}
-
-	public void setSchools(List<SchoolModel> schools) {
-		this.schools = schools;
-	}
 	
 	public List<ClassSchoolModel> getClassSchools() {
 		return classSchools;
@@ -86,16 +83,32 @@ public class TeacherModel {
 	public void setClassSchools(List<ClassSchoolModel> classSchools) {
 		this.classSchools = classSchools;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	@Override
 	public String toString() {
-		return "TeacherModel [id=" + id + ", name=" + name + ", cpf=" + cpf + ", schools=" + schools + ", classSchools="
-				+ classSchools + "]";
+		return "TeacherModel [id=" + id + ", name=" + name + ", cpf=" + cpf + ", email=" + email + ", senha=" + senha
+				+ ", classSchools=" + classSchools + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(classSchools, cpf, id, name, schools);
+		return Objects.hash(classSchools, cpf, email, id, name, senha);
 	}
 
 	@Override
@@ -108,9 +121,14 @@ public class TeacherModel {
 			return false;
 		TeacherModel other = (TeacherModel) obj;
 		return Objects.equals(classSchools, other.classSchools) && Objects.equals(cpf, other.cpf)
-				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
-				&& Objects.equals(schools, other.schools);
+				&& Objects.equals(email, other.email) && Objects.equals(id, other.id)
+				&& Objects.equals(name, other.name) && Objects.equals(senha, other.senha);
 	}
+
+	
+	
+
+	
 
 	
 	
