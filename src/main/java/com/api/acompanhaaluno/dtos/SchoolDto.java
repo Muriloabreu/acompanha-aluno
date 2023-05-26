@@ -6,6 +6,7 @@ import java.util.List;
 import com.api.acompanhaaluno.models.ClassSchoolModel;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class SchoolDto {
 	
@@ -15,7 +16,7 @@ public class SchoolDto {
 	private String cnpj;
 	@NotBlank
 	private String city;
-	@NotBlank
+	@NotNull
 	private List<ClassSchoolModel> classSchools;
 	
 	
@@ -26,7 +27,7 @@ public class SchoolDto {
 	}
 
 	public SchoolDto(@NotBlank String name, @NotBlank String cnpj, @NotBlank String city,
-			@NotBlank List<ClassSchoolModel> classSchools) {
+			@NotNull List<ClassSchoolModel> classSchools) {
 		super();
 		this.name = name;
 		this.cnpj = cnpj;
