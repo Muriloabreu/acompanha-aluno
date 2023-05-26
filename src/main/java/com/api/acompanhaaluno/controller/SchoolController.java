@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.api.acompanhaaluno.dtos.ClassSchoolDto;
+
 import com.api.acompanhaaluno.dtos.SchoolDto;
-import com.api.acompanhaaluno.models.ClassSchoolModel;
 import com.api.acompanhaaluno.models.SchoolModel;
 import com.api.acompanhaaluno.services.SchoolService;
 
@@ -39,6 +38,9 @@ public class SchoolController {
 		if (schoolService.existsByName(SchoolDto.getName())) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Name School is already in use!"); 
 		}
+		if (schoolService.existsByCnpj(SchoolDto.getCnpj())) {
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: CNPJ School is already in use!"); 
+		}
 		SchoolModel SchoolModel = new SchoolModel();
 		BeanUtils.copyProperties(SchoolDto, SchoolModel); /*Coverte Dtos para Model*/
 		
@@ -56,7 +58,7 @@ public class SchoolController {
 		Optional<SchoolModel> SchoolOptional = schoolService.findById(id);
 
 		if (!SchoolOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("School not found. "); /*Mensagem se o cliente não for encontrado */
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("School not found. "); /* Mensagem se a School não for encontrado */
 		}
 
 		return ResponseEntity.status(HttpStatus.OK).body(SchoolOptional.get());
@@ -68,7 +70,7 @@ public class SchoolController {
 		Optional<SchoolModel> SchoolOptional = schoolService.findById(id);
 
 		if (!SchoolOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("School not found. "); /*Mensagem se o cliente não for encontrado */
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("School not found. "); /* Mensagem se a School não for encontrado */
 		}
 		
 		schoolService.delete(SchoolOptional.get());
@@ -83,7 +85,7 @@ public class SchoolController {
 		Optional<SchoolModel> SchoolOptional = schoolService.findById(id);
 
 		if (!SchoolOptional.isPresent()) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("School not found. "); /*Mensagem se o cliente não for encontrado */
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("School not found. "); /* Mensagem se a School não for encontrado */
 		}
 		
 		var SchoolModel = SchoolOptional.get();
