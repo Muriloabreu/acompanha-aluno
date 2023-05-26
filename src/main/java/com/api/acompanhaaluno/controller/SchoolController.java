@@ -92,7 +92,7 @@ public class SchoolController {
 		SchoolModel.setName(SchoolDto.getName());
 		SchoolModel.setCnpj(SchoolDto.getCnpj());
 		SchoolModel.setCity(SchoolDto.getCity());
-		SchoolModel.setClassSchols(SchoolDto.getClassSchools());	
+			
 		
 		return ResponseEntity.status(HttpStatus.OK).body(schoolService.save(SchoolModel));
 
