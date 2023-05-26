@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -26,8 +29,13 @@ public class SchoolModel {
 	private String cnpj;
 	@Column(nullable = false)
 	private String city;
-	@OneToMany
-	@JoinColumn(name = "school_id")
+	@ManyToAny
+	@JoinTable(
+			name = "TB_AUX_SCHOOL",
+			joinColumns = {@JoinColumn(name = "id_schools", referencedColumnName = "id" )},
+			inverseJoinColumns = {@JoinColumn(name = "id_class_schools", referencedColumnName = "id" )}
+			
+			)
 	private List<ClassSchoolModel> classSchools = new ArrayList<>();
 	
 	
