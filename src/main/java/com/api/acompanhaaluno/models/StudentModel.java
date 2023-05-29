@@ -23,6 +23,8 @@ public class StudentModel {
 	private String firtsName;
 	@Column(nullable = false)
 	private String lastName;
+	@Column(nullable = false, unique = true, length = 15)
+	private String cpf;
 	@Column(nullable = false)
 	private String ages;
 	@Column(nullable = false)
@@ -39,18 +41,21 @@ public class StudentModel {
 		
 	}
 	
-	public StudentModel(Long id, String firtsName, String lastName, String ages, String responsibleName,
+	public StudentModel(Long id, String firtsName, String lastName, String cpf, String ages, String responsibleName,
 			LocalDateTime registrationDate, ClassSchoolModel classSchool) {
 		super();
 		this.id = id;
 		this.firtsName = firtsName;
 		this.lastName = lastName;
+		this.cpf = cpf;
 		this.ages = ages;
 		this.responsibleName = responsibleName;
 		this.registrationDate = registrationDate;
 		this.classSchool = classSchool;
 	}
-	
+
+
+
 	/* Accessor Methods */
 
 	public Long getId() {
@@ -108,17 +113,23 @@ public class StudentModel {
 	public void setClassSchool(ClassSchoolModel classSchool) {
 		this.classSchool = classSchool;
 	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	@Override
 	public String toString() {
-		return "StudentModel [id=" + id + ", firtsName=" + firtsName + ", lastName=" + lastName + ", ages=" + ages
-				+ ", responsibleName=" + responsibleName + ", registrationDate=" + registrationDate + ", classSchool="
-				+ classSchool + "]";
+		return "StudentModel [id=" + id + ", firtsName=" + firtsName + ", lastName=" + lastName + ", cpf=" + cpf
+				+ ", ages=" + ages + ", responsibleName=" + responsibleName + ", registrationDate=" + registrationDate
+				+ ", classSchool=" + classSchool + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(ages, classSchool, firtsName, id, lastName, registrationDate, responsibleName);
+		return Objects.hash(ages, classSchool, cpf, firtsName, id, lastName, registrationDate, responsibleName);
 	}
 
 	@Override
@@ -131,10 +142,13 @@ public class StudentModel {
 			return false;
 		StudentModel other = (StudentModel) obj;
 		return Objects.equals(ages, other.ages) && Objects.equals(classSchool, other.classSchool)
-				&& Objects.equals(firtsName, other.firtsName) && Objects.equals(id, other.id)
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(registrationDate, other.registrationDate)
+				&& Objects.equals(cpf, other.cpf) && Objects.equals(firtsName, other.firtsName)
+				&& Objects.equals(id, other.id) && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(registrationDate, other.registrationDate)
 				&& Objects.equals(responsibleName, other.responsibleName);
 	}
+
+	
 	
 	
 	
