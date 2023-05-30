@@ -18,9 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.api.acompanhaaluno.dtos.ClassDiaryDto;
-import com.api.acompanhaaluno.dtos.SchoolDto;
 import com.api.acompanhaaluno.models.ClassDiaryModel;
-import com.api.acompanhaaluno.models.SchoolModel;
 import com.api.acompanhaaluno.services.ClassDiaryService;
 
 import jakarta.validation.Valid;
