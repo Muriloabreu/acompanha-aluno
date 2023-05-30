@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.api.acompanhaaluno.models.ClassSchoolModel;
 import com.api.acompanhaaluno.repositories.ClassSchoolRepository;
+import com.api.acompanhaaluno.repositories.SchoolRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -16,6 +17,8 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 
 	@Autowired
 	ClassSchoolRepository classSchoolRepository;
+	@Autowired
+	SchoolRepository schoolRepository;
 	
 	@Override
 	public List<ClassSchoolModel> findAll() {
@@ -47,6 +50,12 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 	public boolean existsByName(String Name) {
 		
 		return classSchoolRepository.existsByName(Name);
+	}
+
+	@Override
+	public boolean existsById(Long id) {
+		
+		return schoolRepository.existsById(id);
 	}
 
 }
