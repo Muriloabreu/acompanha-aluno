@@ -2,7 +2,7 @@ package com.api.acompanhaaluno.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +39,7 @@ public class ClassSchoolController {
 	@PostMapping
 	public ResponseEntity<Object> saveClassSchool(@RequestBody @Valid ClassSchoolDto classSchoolDto){
 		
-		if (classSchoolService.existsByName(classSchoolDto.getName())) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: Name ClassSchool is already in use!"); 
-		}
+		
 		ClassSchoolModel classSchoolModel = new ClassSchoolModel();
 		BeanUtils.copyProperties(classSchoolDto, classSchoolModel); /*Coverte Dtos para Model*/
 		

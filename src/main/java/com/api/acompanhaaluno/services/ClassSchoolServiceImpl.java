@@ -17,8 +17,7 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 
 	@Autowired
 	ClassSchoolRepository classSchoolRepository;
-	@Autowired
-	SchoolRepository schoolRepository;
+	
 	
 	@Override
 	public List<ClassSchoolModel> findAll() {
@@ -47,15 +46,19 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 	}
 
 	@Override
-	public boolean existsByName(String Name) {
-		
-		return classSchoolRepository.existsByName(Name);
+	public boolean existsByName(String name) {
+		// TODO Auto-generated method stub
+		return classSchoolRepository.existsByName(name);
 	}
 
 	@Override
 	public boolean existsById(Long id) {
-		
-		return schoolRepository.existsById(id);
+		// TODO Auto-generated method stub
+		return classSchoolRepository.existsById(id);
 	}
 
+
+	
+
+	
 }

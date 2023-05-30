@@ -11,6 +11,6 @@ public interface ClassSchoolService {
 	Optional<ClassSchoolModel> findById(Long id);
 	ClassSchoolModel save(ClassSchoolModel classSchool);
 	void delete(ClassSchoolModel classSchool);
-	boolean existsByName(String Name);
+	boolean existsByName(String name);
 	boolean existsById(Long id);
 }
