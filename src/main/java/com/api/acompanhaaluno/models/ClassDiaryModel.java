@@ -1,8 +1,7 @@
 package com.api.acompanhaaluno.models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,7 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,9 +20,9 @@ public class ClassDiaryModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@OneToMany
-	@JoinColumn(name = "class_diarys_id")
-	private List<StudentModel> students = new ArrayList<>();
+	@OneToOne
+	@JoinColumn(name = "student_id", referencedColumnName = "id")
+	private StudentModel student;
 	@Column(nullable = false)
 	private LocalDate date; 
 	@Column(nullable = false)
@@ -35,10 +34,10 @@ public class ClassDiaryModel {
 	}
 
 
-	public ClassDiaryModel(Long id, List<StudentModel> students, LocalDate date, String note) {
+	public ClassDiaryModel(Long id, StudentModel student, LocalDate date, String note) {
 		super();
 		this.id = id;
-		this.students = students;
+		this.student = student;
 		this.date = date;
 		this.note = note;
 	}
@@ -53,14 +52,13 @@ public class ClassDiaryModel {
 		this.id = id;
 	}
 
-
-	public List<StudentModel> getStudents() {
-		return students;
+	public StudentModel getStudent() {
+		return student;
 	}
 
 
-	public void setStudents(List<StudentModel> students) {
-		this.students = students;
+	public void setStudent(StudentModel student) {
+		this.student = student;
 	}
 
 
@@ -86,13 +84,13 @@ public class ClassDiaryModel {
 
 	@Override
 	public String toString() {
-		return "ClassDiaryModel [id=" + id + ", students=" + students + ", date=" + date + ", note=" + note + "]";
+		return "ClassDiaryModel [id=" + id + ", student=" + student + ", date=" + date + ", note=" + note + "]";
 	}
 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, id, note, students);
+		return Objects.hash(date, id, note, student);
 	}
 
 
@@ -106,7 +104,7 @@ public class ClassDiaryModel {
 			return false;
 		ClassDiaryModel other = (ClassDiaryModel) obj;
 		return Objects.equals(date, other.date) && Objects.equals(id, other.id) && Objects.equals(note, other.note)
-				&& Objects.equals(students, other.students);
+				&& Objects.equals(student, other.student);
 	}
 	
 	
