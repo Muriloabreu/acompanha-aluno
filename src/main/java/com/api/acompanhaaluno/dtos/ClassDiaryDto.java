@@ -9,29 +9,30 @@ import com.api.acompanhaaluno.models.StudentModel;
 public class ClassDiaryDto {
 	
 	
-	private List<StudentModel> students = new ArrayList<>();
+	private StudentModel student;
 	
 	private LocalDate date; 
 	
 	private String note;
 
 	public ClassDiaryDto() {
-		super();
+		
 	}
 
-	public ClassDiaryDto(List<StudentModel> students, LocalDate date, String note) {
-		super();
-		this.students = students;
+	public ClassDiaryDto(StudentModel student, LocalDate date, String note) {
+		
+		this.student = student;
 		this.date = date;
 		this.note = note;
 	}
 
-	public List<StudentModel> getStudents() {
-		return students;
+
+	public StudentModel getStudent() {
+		return student;
 	}
 
-	public void setStudents(List<StudentModel> students) {
-		this.students = students;
+	public void setStudent(StudentModel student) {
+		this.student = student;
 	}
 
 	public LocalDate getDate() {
