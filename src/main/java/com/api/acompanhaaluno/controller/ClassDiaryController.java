@@ -84,7 +84,7 @@ public class ClassDiaryController {
 		}
 		
 		var classDiaryModel = classDiaryOptional.get();
-		classDiaryModel.setStudents(classDiaryDto.getStudents());
+		classDiaryModel.setStudent(classDiaryDto.getStudent());
 		classDiaryModel.setDate(classDiaryDto.getDate());
 		classDiaryModel.setNote(classDiaryDto.getNote());
 			
