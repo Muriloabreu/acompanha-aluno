@@ -16,5 +16,5 @@ public interface ClassSchoolRepository extends JpaRepository<ClassSchoolModel, L
 			+ "FROM tb_class_schools "
 			+ "INNER JOIN tb_schools ON tb_class_schools.school_id = tb_schools.id "
 			+ "WHERE UPPER(tb_schools.name) = UPPER(:schoolName) ")
-	List<ClassJoinMinProjections> finByClassSchoolJoin(String schoolName);
+	List<ClassJoinMinProjections> findByClassSchoolJoin(String schoolName);
 }
