@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.acompanhaaluno.models.ClassSchoolModel;
+import com.api.acompanhaaluno.projections.ClassJoinMinProjections;
 import com.api.acompanhaaluno.repositories.ClassSchoolRepository;
 import com.api.acompanhaaluno.repositories.SchoolRepository;
 
@@ -56,6 +57,16 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 		// TODO Auto-generated method stub
 		return classSchoolRepository.existsById(id);
 	}
+
+	@Override
+	public List<ClassJoinMinProjections> findByAllClassSchool(String schoolName) {
+		
+		return classSchoolRepository.findByClassSchoolJoin(schoolName);
+	}
+
+	
+
+	
 
 
 	
