@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.api.acompanhaaluno.dtos.ClassSchoolDto;
 import com.api.acompanhaaluno.models.ClassSchoolModel;
+import com.api.acompanhaaluno.projections.ClassJoinMinProjections;
 import com.api.acompanhaaluno.services.ClassSchoolService;
 
 
@@ -63,6 +64,15 @@ public class ClassSchoolController {
 		return ResponseEntity.status(HttpStatus.OK).body(classSchoolOptional.get());
 
 	}
+	@GetMapping("/{schoolName}")
+	public ResponseEntity<List<ClassJoinMinProjections>> getAllClassSchool(@PathVariable(value = "schoolName") String schoolName) {
+		
+		List<ClassJoinMinProjections> ClassSchools = classSchoolService.findByAllClassSchool(schoolName);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(ClassSchools);
+
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteClassSchool(@PathVariable(value = "id") Long id) {
 
