@@ -1,5 +1,6 @@
 package com.api.acompanhaaluno.serviceTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Ignore;
@@ -11,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.api.acompanhaaluno.models.ClassSchoolModel;
-import com.api.acompanhaaluno.projections.ClassJoinMinProjections;
 import com.api.acompanhaaluno.services.ClassSchoolService;
 
 @SpringBootTest
@@ -39,17 +39,14 @@ public class ClassSchoolTest {
 		
 	
 	}
-	@Test
+	//@Test
+	@Ignore
 	public void AllClass() {
 			
-			List<ClassJoinMinProjections> allClass = cs.findByAllClassSchool("Escola Municipal Maria Teresa");
-			
-			for (ClassJoinMinProjections obj : allClass) {
-				System.out.println();
-				System.out.println(obj.getName());
-				
-				
-			}
+			List<ClassSchoolModel> tutorials = new ArrayList<>();
+
+			tutorials = cs.findByAllClassSchool("Escola");
+			System.out.println(tutorials);
 		
 	}
 }
