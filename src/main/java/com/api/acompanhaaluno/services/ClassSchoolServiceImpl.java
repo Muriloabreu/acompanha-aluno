@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.acompanhaaluno.models.ClassSchoolModel;
-import com.api.acompanhaaluno.projections.ClassJoinMinProjections;
 import com.api.acompanhaaluno.repositories.ClassSchoolRepository;
-import com.api.acompanhaaluno.repositories.SchoolRepository;
+
 
 import jakarta.transaction.Transactional;
 
@@ -48,20 +47,20 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 
 	@Override
 	public boolean existsByName(String name) {
-		// TODO Auto-generated method stub
+		
 		return classSchoolRepository.existsByName(name);
 	}
 
 	@Override
 	public boolean existsById(Long id) {
-		// TODO Auto-generated method stub
+		
 		return classSchoolRepository.existsById(id);
 	}
 
 	@Override
-	public List<ClassJoinMinProjections> findByAllClassSchool(String schoolName) {
+	public List<ClassSchoolModel> findByAllClassSchool(String name) {
 		
-		return classSchoolRepository.findByClassSchoolJoin(schoolName);
+		return classSchoolRepository.findByClassSchoolJoin(name);
 	}
 
 	
