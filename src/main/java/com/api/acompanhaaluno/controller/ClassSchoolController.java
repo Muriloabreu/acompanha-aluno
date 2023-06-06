@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.api.acompanhaaluno.dtos.ClassSchoolDto;
 import com.api.acompanhaaluno.models.ClassSchoolModel;
-import com.api.acompanhaaluno.projections.ClassJoinMinProjections;
 import com.api.acompanhaaluno.services.ClassSchoolService;
 
 
@@ -64,12 +64,12 @@ public class ClassSchoolController {
 		return ResponseEntity.status(HttpStatus.OK).body(classSchoolOptional.get());
 
 	}
-	@GetMapping("/{schoolName}")
-	public ResponseEntity<List<ClassJoinMinProjections>> getAllClassSchool(@PathVariable(value = "schoolName") String schoolName) {
+	@GetMapping("/list")
+	public ResponseEntity<List<ClassSchoolModel>> getAllClassSchool(@RequestParam(name = "name") String name) {
 		
-		List<ClassJoinMinProjections> ClassSchools = classSchoolService.findByAllClassSchool(schoolName);
+		List<ClassSchoolModel> classSchoolsList = classSchoolService.findByAllClassSchool(name);
 		
-		return ResponseEntity.status(HttpStatus.OK).body(ClassSchools);
+		return new ResponseEntity<List<ClassSchoolModel>>(classSchoolsList, HttpStatus.OK);
 
 	}
 	
