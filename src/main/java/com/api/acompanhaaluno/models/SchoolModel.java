@@ -33,7 +33,7 @@ public class SchoolModel {
 	}
 
 	public SchoolModel(Long id, String name, String cnpj, String city) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 		this.cnpj = cnpj;

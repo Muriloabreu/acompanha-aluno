@@ -39,14 +39,8 @@ public class ClassSchoolTest {
 		
 	
 	}
-	//@Test
-	@Ignore
-	public void AllClass() {
-			
-			List<ClassSchoolModel> tutorials = new ArrayList<>();
 
-			tutorials = cs.findByAllClassSchool("Escola");
-			System.out.println(tutorials);
+			
 		
-	}
+	
 }

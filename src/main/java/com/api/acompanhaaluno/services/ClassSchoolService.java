@@ -9,10 +9,9 @@ import com.api.acompanhaaluno.models.ClassSchoolModel;
 public interface ClassSchoolService {
 	
 	List<ClassSchoolModel> findAll();
-	List<ClassSchoolModel>findByAllClassSchool(String name);
+	List<ClassSchoolModel>findByNameJoin(String name);
 	Optional<ClassSchoolModel> findById(Long id);
 	ClassSchoolModel save(ClassSchoolModel classSchool);
 	void delete(ClassSchoolModel classSchool);
-	boolean existsByName(String name);
 	boolean existsById(Long id);
 }

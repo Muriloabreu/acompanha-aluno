@@ -35,7 +35,7 @@ public class ClassSchoolModel {
 	}
 
 	public ClassSchoolModel(Long id, String name, String category, SchoolModel school) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 		this.category = category;

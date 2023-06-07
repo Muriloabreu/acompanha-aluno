@@ -64,10 +64,10 @@ public class ClassSchoolController {
 		return ResponseEntity.status(HttpStatus.OK).body(classSchoolOptional.get());
 
 	}
-	@GetMapping("/list")
+	@GetMapping(value = "/class")
 	public ResponseEntity<List<ClassSchoolModel>> getAllClassSchool(@RequestParam(name = "name") String name) {
 		
-		List<ClassSchoolModel> classSchoolsList = classSchoolService.findByAllClassSchool(name);
+		List<ClassSchoolModel> classSchoolsList = classSchoolService.findByNameJoin(name);
 		
 		return new ResponseEntity<List<ClassSchoolModel>>(classSchoolsList, HttpStatus.OK);
 

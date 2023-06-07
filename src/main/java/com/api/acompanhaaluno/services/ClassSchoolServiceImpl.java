@@ -45,11 +45,6 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 		classSchoolRepository.delete(classSchool);
 	}
 
-	@Override
-	public boolean existsByName(String name) {
-		
-		return classSchoolRepository.existsByName(name);
-	}
 
 	@Override
 	public boolean existsById(Long id) {
@@ -58,9 +53,9 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 	}
 
 	@Override
-	public List<ClassSchoolModel> findByAllClassSchool(String name) {
+	public List<ClassSchoolModel> findByNameJoin(String name) {
 		
-		return classSchoolRepository.findByClassSchoolJoin(name);
+		return classSchoolRepository.findByNameJoin(name);
 	}
 
 	
