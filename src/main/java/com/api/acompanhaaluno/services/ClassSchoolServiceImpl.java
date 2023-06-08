@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.acompanhaaluno.models.ClassSchoolModel;
+import com.api.acompanhaaluno.projections.ClassJoinMinProjection;
 import com.api.acompanhaaluno.repositories.ClassSchoolRepository;
-
 
 import jakarta.transaction.Transactional;
 
@@ -53,9 +53,9 @@ public class ClassSchoolServiceImpl implements ClassSchoolService{
 	}
 
 	@Override
-	public List<ClassSchoolModel> findByNameJoin(String name) {
+	public List<ClassJoinMinProjection> findByClassJoin(String name) {
 		
-		return classSchoolRepository.findByNameJoin(name);
+		return classSchoolRepository.findByClassJoin(name);
 	}
 
 	
