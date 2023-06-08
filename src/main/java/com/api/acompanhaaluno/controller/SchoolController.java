@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.api.acompanhaaluno.dtos.SchoolDto;
 import com.api.acompanhaaluno.models.SchoolModel;
@@ -64,6 +65,9 @@ public class SchoolController {
 		return ResponseEntity.status(HttpStatus.OK).body(SchoolOptional.get());
 
 	}
+	
+	
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteSchool(@PathVariable(value = "id") Long id) {
 

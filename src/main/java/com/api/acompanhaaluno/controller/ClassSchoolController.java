@@ -3,7 +3,6 @@ package com.api.acompanhaaluno.controller;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +17,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.api.acompanhaaluno.dtos.ClassSchoolDto;
 import com.api.acompanhaaluno.models.ClassSchoolModel;
+import com.api.acompanhaaluno.projections.ClassJoinMinProjection;
+import com.api.acompanhaaluno.repositories.ClassSchoolRepository;
 import com.api.acompanhaaluno.services.ClassSchoolService;
-
 
 import jakarta.validation.Valid;
 
@@ -64,12 +65,14 @@ public class ClassSchoolController {
 		return ResponseEntity.status(HttpStatus.OK).body(classSchoolOptional.get());
 
 	}
-	@GetMapping(value = "/class")
-	public ResponseEntity<List<ClassSchoolModel>> getAllClassSchool(@RequestParam(name = "name") String name) {
+	
+	@GetMapping("/search/")
+	@ResponseBody
+	public ResponseEntity<List<ClassJoinMinProjection>> findByName(@RequestParam(name = "name") String name) {
 		
-		List<ClassSchoolModel> classSchoolsList = classSchoolService.findByNameJoin(name);
+		List<ClassJoinMinProjection> classSchoolsList = classSchoolService.findByClassJoin(name);
 		
-		return new ResponseEntity<List<ClassSchoolModel>>(classSchoolsList, HttpStatus.OK);
+		return new ResponseEntity<List<ClassJoinMinProjection>>(classSchoolsList, HttpStatus.OK);
 
 	}
 	
