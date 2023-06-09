@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.acompanhaaluno.models.StudentModel;
+import com.api.acompanhaaluno.projections.StudentJoinMinProjection;
 import com.api.acompanhaaluno.repositories.StudentRepository;
 
 import jakarta.transaction.Transactional;
@@ -47,6 +48,12 @@ public class StudentServiceImpl implements StudentService{
 	public boolean existsByCpf(String cpf) {
 		
 		return studentRepository.existsByCpf(cpf);
+	}
+
+	@Override
+	public List<StudentJoinMinProjection> findByListPreStudents(String date, String name) {
+		
+		return studentRepository.findByListPreStudents(date, name);
 	}
 
 }
