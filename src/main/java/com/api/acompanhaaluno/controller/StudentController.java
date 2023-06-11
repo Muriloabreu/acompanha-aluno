@@ -1,5 +1,6 @@
 package com.api.acompanhaaluno.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
@@ -18,11 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.api.acompanhaaluno.dtos.ClassSchoolDto;
 import com.api.acompanhaaluno.dtos.StudentDto;
-import com.api.acompanhaaluno.models.ClassSchoolModel;
 import com.api.acompanhaaluno.models.StudentModel;
+import com.api.acompanhaaluno.projections.StudentJoinMinProjection;
 import com.api.acompanhaaluno.services.StudentService;
 
 import jakarta.validation.Valid;
@@ -65,6 +67,18 @@ public class StudentController {
 		return ResponseEntity.status(HttpStatus.OK).body(studentOptional.get());
 
 	}
+	
+	@GetMapping("/search/")
+	@ResponseBody
+	public ResponseEntity<List<StudentJoinMinProjection>> findByStudentsPresentSchool(@RequestParam(name = "date") LocalDate date, 
+																	 @RequestParam(name = "name") String name ) {
+		
+		List<StudentJoinMinProjection> studentsList = studentService.findByListPreStudents(date, name);
+		
+		return new ResponseEntity<List<StudentJoinMinProjection>>(studentsList, HttpStatus.OK);
+
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteStudent(@PathVariable(value = "id") Long id) {
 
