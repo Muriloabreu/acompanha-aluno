@@ -1,8 +1,10 @@
 package com.api.acompanhaaluno.projections;
 
+import java.time.LocalDate;
+
 public interface StudentJoinMinProjection {
 	
-	String getDate();
+	LocalDate getDate();
 	String getName();
 
 }
