@@ -1,5 +1,6 @@
 package com.api.acompanhaaluno.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +52,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public List<StudentJoinMinProjection> findByListPreStudents(String date, String name) {
+	public List<StudentJoinMinProjection> findByListPreStudents(LocalDate date, String name) {
 		
 		return studentRepository.findByListPreStudents(date, name);
 	}
