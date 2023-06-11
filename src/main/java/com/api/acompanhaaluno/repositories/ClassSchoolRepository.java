@@ -14,7 +14,7 @@ public interface ClassSchoolRepository extends JpaRepository<ClassSchoolModel, L
 	
 	boolean existsByName(String name);
 	
-	@Query(nativeQuery = true, value = "SELECT c.category, c.name, s.name, s.city "
+	@Query(nativeQuery = true, value = "SELECT c.category, c.name AS nameClass "
 			+ "FROM tb_class_schools c INNER JOIN tb_schools s ON s.id = c.school_id "
 			+ "WHERE s.name LIKE %?1% ")
 	List<ClassJoinMinProjection> findByClassJoin(String name);
