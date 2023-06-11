@@ -1,5 +1,6 @@
 package com.api.acompanhaaluno.repositories;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +18,7 @@ public interface StudentRepository extends JpaRepository<StudentModel, Long>{
 			+ "INNER JOIN tb_students s ON s.id = cd.student_id "
 			+ "INNER JOIN tb_class_schools cs ON s.class_school_id = cs.id "
 			+ "INNER JOIN tb_schools sch ON cs.school_id = sch.id "
-			+ "WHERE cd.date = %?1% "
-			+ "AND sch.name LIKE %?2% ")
-	List<StudentJoinMinProjection> findByListPreStudents(String date, String name);
+			+ "WHERE cd.date = :date "
+			+ "AND sch.name LIKE %:name% ")
+	List<StudentJoinMinProjection> findByListPreStudents(LocalDate date, String name);
 }
