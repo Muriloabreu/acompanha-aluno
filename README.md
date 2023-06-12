@@ -18,7 +18,12 @@ Os CRUDs são:
 - Teacher; 
 - ClassDiary;
 
-
+### Relatórios Customizados Utilizando Query Native
+Foi criado dois relatórios onde podemos obter informações mais precisas
+- 1° Podemos listar todas as turmas(Class) de uma determinada Escola(School) só digitando parte do nome da Escola(School);
+![Web 1](https://github.com/Muriloabreu/db-assets/blob/main/print_agendador/Tela_listagem)
+- 2° Podemos listar o status do diário de classe(Class Diary) de todos os Alunos(Students) informando a data e a Escola(School)
+![Web 1](https://github.com/Muriloabreu/db-assets/blob/main/print_agendador/Tela_listagem)
 
 # Tecnologias utilizadas
 ## Back end
